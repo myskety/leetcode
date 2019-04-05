@@ -4,8 +4,7 @@
 
 Given <code>n</code> non-negative integers representing the histogram's bar height where width of each bar is 1. find the area of largest rectangle in the histogram.</br>
 
-![Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3]](https://github.com/myskety/leetcode/blob/master/images/histogram.png)
-
+![asdasd](https://github.com/myskety/leetcode/blob/master/images/histogram.png)
 
 #### Example 1
 
