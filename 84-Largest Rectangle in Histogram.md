@@ -27,36 +27,31 @@ Explanation: </br>
 
 
 #### Solution
-<code>pre</code>指向前驱结点，<code>cur</code>指向当前访问结点，检测当前结点是否是重复结点，如果是，忽略，继续遍历，如果不是，更新<code>pre</code>和<code>cur</code>，继续遍历。最后将<code>pre</code>的<code>next</code>置<code>null</code>.
-
+这道题有些难度，方法是维护一个高度递增的栈，依然是考虑访问到的某一位置，当该位置的高度大于栈顶元素的高度时，将所访问位置进栈(之所以不是将高度进栈时为了后面计算面积时方便地获取宽度)；反之，开始计算矩形面积并更新结果。<br>
+计算面积过程：取出栈顶元素，高度即为对应高度，当栈为空时，宽度为<code>i</code>，<code>i</code>表示当前位置索引，当栈不为空时，宽度为<code>i-stack.top()-1</code>。然后更新结果，并将<code>i</code>减一，重复上述过程。<br>
+值得注意的是计算面积仅发生在栈中元素的高度大于当前访问位置的高度时。比如对于输入[2,1,5,6,2,3]，面积更新依次是2->6->10。为了保证高度为1的位置处的面积也能得到计算，需要在列表末尾添加高度0。<br>
+这样，保证了当计算高度为<code>height[stack.top()]</code>的面积时<code>stack.pop().top()+1~i-1</code>这个范围内(闭区间)的所有bar的高度都可以用来构成矩形。(核心思想)
 #### AC code
 
 ```
 class Solution {
 public:
-    ListNode* deleteDuplicates(ListNode* head) {
-        if(head == NULL)
-            return NULL;
-        ListNode *cur = head;
-        ListNode *dummy = new ListNode(-1);
-        ListNode *pre = dummy;
-        dummy->next = head;
-        while(cur){
-            int flag = 0;
-            if(cur->next && cur->next->val == cur->val){
-                flag = 1;
-                cur = cur->next;
-            }
-            if(flag)
-                cur = cur->next;
-            if(!flag){
-                pre->next = cur;
-                pre = cur;
-                cur = cur->next;
+    int largestRectangleArea(vector<int>& heights) {
+        int ans = 0;
+        stack<int> s;
+        heights.push_back(0);
+        for(int i = 0; i < heights.size(); i++){
+            if(s.empty() || heights[i] > heights[s.top()])
+                s.push(i);
+            else{
+                int cur = s.top();
+                s.pop();
+                int width = s.empty() ? i : i - s.top() - 1;
+                ans = max(ans, heights[cur] * width);
+                i--;
             }
         }
-        pre->next = NULL;
-        return dummy->next;
+        return ans;
     }
 };
 ```
