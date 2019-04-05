@@ -22,7 +22,7 @@ Output: 1->2->5</br></br>
 Input: 1->1->1->2->3 </br>
 Output: 2->3</br></br>
 Explanation: </br>
-删去有序链表中出现次数大于1的所有结点。
+
 
 
 
