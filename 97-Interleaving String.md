@@ -24,7 +24,7 @@ __Explanation:__<br>
 * 更新方式：
   * <code>dp[i][j] = (s1[i-1] == s3[i+j-1] && dp[i-1][j]) || (s2[j-1] == s3[i+j-1] && dp[i][j-1])</code>
 
-#### AC code (Time Limit Exceeded when n = 19)
+#### AC code
 
 ```
 class Solution {
