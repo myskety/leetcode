@@ -24,7 +24,7 @@ __Note:__ You may not engage in multiple transactions at the same time (i.e., yo
 <strong>Explanation:</strong> In this case, no transaction is done, i.e. max profit = 0.</pre>
 
 __Explanation__:<br>
-不限交易次数，求最大利润。
+最多交易2次，求最大利润。
 
 #### Dp Solution
 
