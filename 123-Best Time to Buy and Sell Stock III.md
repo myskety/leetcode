@@ -55,6 +55,7 @@ public:
             }
         }
         return global[n][2];
+    }
 };
 ```
 
