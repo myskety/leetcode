@@ -1,29 +1,38 @@
 ## 问题描述
 
-Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.</br>
+Given a ***non-empty*** binary tree, find the maximum path sum.</br>
 
-#### Example:<br>
-Given the following triangle:
-<pre>[
-     [<strong>2</strong>],
-    [<strong>3</strong>,4],
-   [6,<strong>5</strong>,7],
-  [4,<strong>1</strong>,8,3]
-]
+
+For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain ***at least one node*** and does not need to go through the root.
+#### Example 1:<br>
+<pre><strong>Input:</strong> [1,2,3]
+
+       <strong>1</strong>
+      <strong>/ \</strong>
+     <strong>2</strong>   <strong>3</strong>
+
+<strong>Output:</strong> 6
 </pre>
-The minimum path sum from top to bottom is <code>11 (i.e., 2 + 3 + 5 + 1 = 11)</code>.<br>
+#### Example 2:<br>
+<pre><strong>Input:</strong> [-10,9,20,null,null,15,7]
 
-__Note:__
-Bonus point if you are able to do this using only ***O(n)*** extra space, where ***n*** is the total number of rows in the triangle.<br>
+&nbsp;  -10
+&nbsp; &nbsp;/ \
+&nbsp; 9 &nbsp;<strong>20</strong>
+&nbsp; &nbsp; <strong>/ &nbsp;\</strong>
+&nbsp; &nbsp;<strong>15 &nbsp; 7</strong>
+
+<strong>Output:</strong> 42
+</pre>
 
 __Explanation__:<br>
-从上到下最短的路径和，只能走相邻的结点。
+求二叉树中的最大路径和。
 
 #### DFS Solution
 
-* 对于每个结点需要直到讲过其左子结点的路径和大还是经过右子结点的路径和大。
+* 对于每个结点需要知道经过其左子结点的路径和大还是经过右子结点的路径和大。
 
-* 定义递归函数返回值为以当前结点为根结点，到叶结点的最大路径之和
+* 定义递归函数返回值为以当前结点为根结点的最大路径之和
 
 #### AC code
 
